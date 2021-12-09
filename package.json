@@ -1,0 +1,59 @@
+{
+  "name": "bb-api",
+  "version": "2.3.4",
+  "description": "Unofficial node.js implementation of Banco do Brasil's mobile API",
+  "main": "dist/index.js",
+  "author": "Arthur Nobrega",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arthurnobrega/bb-api.git"
+  },
+  "engines": {
+    "node": "^10.15.3",
+    "npm": "^6.4.1"
+  },
+  "scripts": {
+    "prepublish": "npm run build",
+    "build": "babel src -d dist --source-maps --ignore **/*.test.js,**/__mocks__",
+    "start": "yarn build && node dist/index.js",
+    "test": "jest",
+    "lint": "eslint ."
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "node_modules",
+      "dist"
+    ]
+  },
+  "devDependencies": {
+    "@babel/node": "^7.16.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.8.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-config-prettier": "^4.3.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jest": "^22.6.4",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-prettier": "^3.1.0",
+    "jest": "^24.8.0",
+    "jest-cli": "^24.8.0",
+    "prettier": "^1.17.1"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.4.4",
+    "@babel/plugin-transform-runtime": "^7.4.4",
+    "@babel/polyfill": "^7.4.4",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/runtime": "^7.4.5",
+    "bb-api": "^2.3.4",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "node-fetch": "^2.6.0",
+    "yargs": "^13.2.4"
+  }
+}
