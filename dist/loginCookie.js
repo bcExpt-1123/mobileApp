@@ -11,7 +11,9 @@ var _classCallCheck2 = _interopRequireDefault(require("@babel/runtime/helpers/cl
 
 var _createClass2 = _interopRequireDefault(require("@babel/runtime/helpers/createClass"));
 
-var LoginCookie = /*#__PURE__*/function () {
+var LoginCookie =
+/*#__PURE__*/
+function () {
   function LoginCookie() {
     (0, _classCallCheck2["default"])(this, LoginCookie);
   }

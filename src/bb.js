@@ -3,8 +3,6 @@ import querystring from 'querystring';
 import LoginCookie from './loginCookie';
 import { BASE_ENDPOINT, DEFAULT_HEADERS } from './constants';
 import BBChecking from './checking';
-import BBSavings from './savings';
-import BBCreditCard from './creditCard';
 
 const refreshHash = async () => {
   const hashUrl = 'hash';
@@ -62,8 +60,6 @@ export default class BB {
     const { login } = JSON.parse(text);
 
     this.checking = new BBChecking();
-    this.savings = new BBSavings();
-    this.creditCard = new BBCreditCard();
 
     return login;
   }
