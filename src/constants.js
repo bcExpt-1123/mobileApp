@@ -1,3 +1,4 @@
+
 export const BASE_ENDPOINT = 'https://mobi.bb.com.br/mov-centralizador/';
 
 export const DEFAULT_HEADERS = {
