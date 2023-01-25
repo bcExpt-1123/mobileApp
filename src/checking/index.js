@@ -3,6 +3,7 @@ import LoginCookie from '../loginCookie';
 import { BASE_ENDPOINT, DEFAULT_HEADERS } from '../constants';
 import { parseAmountString } from '../helpers';
 
+
 export default class BBChecking {
   async getBalance() {
     const balanceUrl = 'servico/ServicoSaldo/saldo';
