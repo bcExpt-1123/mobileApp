@@ -19,6 +19,7 @@ const refreshHash = async () => {
   return hash;
 };
 
+
 export default class BB {
   checking = null;
 
